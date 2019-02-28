@@ -131,7 +131,8 @@ public class RemoveCommentedOutCode extends VoidVisitorAdapter<Object> implement
 
 			String currentLine;
 			// Default: UNIX style line endings
-			System.setProperty("line.separator", "\r\n");
+			System.setProperty("line.separator", "\n");
+                        //System.setProperty("line.separator", "\r\n");
 			int lineNumber = 0;
 
 			while ((currentLine = reader.readLine()) != null) {

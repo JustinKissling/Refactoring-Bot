@@ -205,9 +205,14 @@ public class GithubObjectTranslator {
 		String date = sdf.format(now);
 
 		// Fill object with data
-		createRequest.setTitle("Bot Pull-Request Refactoring for PullRequest #" + refactoredRequest.getRequestNumber());
-		createRequest.setBody("Created by " + gitConfig.getBotName() + " on " + date + " for PullRequest "
-				+ refactoredRequest.getRequestLink() + ".");
+		createRequest.setTitle("Cleaned up commented out code");
+                createRequest.setBody("Hello!\n We are currently testing a bot that automatically refactors SonarQube issues "
+                        + "(https://github.com/Refactoring-Bot/Refactoring-Bot). We would like to collect some data on the acceptance rate of automated refactorings."
+                        + " This is an automated pull request created by the bot, it will not be able to react to comments. "
+                        + "Please accept or deny this pull request, based on its usefulness. If you decide to reject it, please briefly describe your reason (e.g. false positive). "
+                        + "Regardless of your decision, we will not send you any further requests. Thank you!\n"
+                        + "Best regards,\n" +
+                         "Justin Kissling");
 		createRequest.setHead(gitConfig.getBotName() + ":" + botBranchName);
 		createRequest.setBase(refactoredRequest.getBranchName());
 		createRequest.setMaintainer_can_modify(true);
@@ -235,9 +240,14 @@ public class GithubObjectTranslator {
 
 		// Fill object with data
 		// TODO: Dynamic branches
-		createRequest.setTitle("Bot Pull-Request Refactoring with '" + gitConfig.getAnalysisService() + "'");
-		createRequest.setBody("Created by " + gitConfig.getBotName() + " on " + date + " for the "
-				+ gitConfig.getAnalysisService() + "-Issue '" + issue.getCommentServiceID() + "'.");
+		createRequest.setTitle("Cleaned up commented out code");
+		createRequest.setBody("Hello!\n We are currently testing a bot that automatically refactors SonarQube issues "
+                        + "(https://github.com/Refactoring-Bot/Refactoring-Bot). We would like to collect some data on the acceptance rate of automated refactorings."
+                        + " This is an automated pull request created by the bot, it will not be able to react to comments. "
+                        + "Please accept or deny this pull request, based on its usefulness. If you decide to reject it, please briefly describe your reason (e.g. false positive). "
+                        + "Regardless of your decision, we will not send you any further requests. Thank you!\n"
+                        + "Best regards,\n" +
+                         "Justin Kissling");
 		createRequest.setHead(gitConfig.getBotName() + ":" + newBranch);
 		createRequest.setBase("master");
 		createRequest.setMaintainer_can_modify(true);

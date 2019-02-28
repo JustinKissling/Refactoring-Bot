@@ -51,6 +51,7 @@ public class SonarQubeDataGrabber {
 			apiUriBuilder.queryParam("statuses", "OPEN,REOPENED");
 			apiUriBuilder.queryParam("ps", 500);
 			apiUriBuilder.queryParam("p", page);
+                        apiUriBuilder.queryParam("rules", "squid:CommentedOutCodeLine");
 
 			URI sonarQubeURI = apiUriBuilder.build().encode().toUri();
 

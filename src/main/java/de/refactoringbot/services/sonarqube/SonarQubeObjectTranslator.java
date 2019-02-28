@@ -16,6 +16,8 @@ import de.refactoringbot.model.sonarqube.SonarQubeIssues;
 import de.refactoringbot.refactoring.RefactoringOperations;
 import de.refactoringbot.services.main.FileService;
 import java.io.File;
+import java.util.Collections;
+import java.util.Random;
 
 /**
  * This class translates SonarCube Objects into Bot-Objects.
@@ -116,6 +118,8 @@ public class SonarQubeObjectTranslator {
 				break;
 			}
 		}
+                
+                Collections.shuffle(botIssues, new Random(1337));
 
 		return botIssues;
 	}
