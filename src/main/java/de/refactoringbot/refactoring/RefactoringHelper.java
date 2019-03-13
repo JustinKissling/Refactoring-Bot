@@ -9,7 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.javaparser.JavaParser;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
@@ -54,7 +54,7 @@ public class RefactoringHelper {
 		for (String javaFile : allJavaFiles) {
 			// parse a file
 			FileInputStream filepath = new FileInputStream(javaFile);
-			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(JavaParser.parse(filepath));
+			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(StaticJavaParser.parse(filepath));
 
 			// Get all Classes
 			List<ClassOrInterfaceDeclaration> classes = compilationUnit.findAll(ClassOrInterfaceDeclaration.class);
@@ -98,7 +98,7 @@ public class RefactoringHelper {
 		for (String javaFile : allJavaFiles) {
 			// parse a file
 			FileInputStream filepath = new FileInputStream(javaFile);
-			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(JavaParser.parse(filepath));
+			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(StaticJavaParser.parse(filepath));
 
 			List<MethodCallExpr> methodCalls = compilationUnit.findAll(MethodCallExpr.class);
 
@@ -143,7 +143,7 @@ public class RefactoringHelper {
 		for (String javaFile : allJavaFiles) {
 			// parse a file
 			FileInputStream filepath = new FileInputStream(javaFile);
-			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(JavaParser.parse(filepath));
+			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(StaticJavaParser.parse(filepath));
 
 			// Get all Classes
 			List<ClassOrInterfaceDeclaration> classes = compilationUnit.findAll(ClassOrInterfaceDeclaration.class);
@@ -218,7 +218,7 @@ public class RefactoringHelper {
 		for (String javaFile : javaFiles) {
 			// Create compilation unit
 			FileInputStream methodPath = new FileInputStream(javaFile);
-			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(JavaParser.parse(methodPath));
+			CompilationUnit compilationUnit = LexicalPreservingPrinter.setup(StaticJavaParser.parse(methodPath));
 
 			// Get all Methods and MethodCalls of File
 			List<MethodDeclaration> fileMethods = compilationUnit.findAll(MethodDeclaration.class);
